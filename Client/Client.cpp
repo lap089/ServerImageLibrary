@@ -65,11 +65,14 @@ int main()
 		po::store(po::command_line_parser(commandParser(buf)).options(desc).run(),vm); 
 		po::notify(vm);
 
-		if (!loginStatus && !vm.count("login") && !vm.count("register")) {
+		if (!loginStatus && !vm.count("login") && !vm.count("register") && !vm.count("help")) {
 			cout << "Please login first or register new account (--help (-h) for more info)" << endl;
 		}
 		else if (vm.count("login") && vm.size() == 3) {
-			if (vm.count("user") && vm.count("pass")) {
+			if (loginStatus) {
+				cout << "Please logout first!" << endl;
+			}
+			else if (vm.count("user") && vm.count("pass")) {
 				authenticatedUser = login(sock, user, pass);
 				loginStatus = true;
 				cout << "Login successful!" << endl;

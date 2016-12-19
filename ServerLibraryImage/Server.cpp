@@ -101,7 +101,10 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 				cout << "Please login first or register new account (--help (-h) for more info)" << endl;
 			}
 			else if (vm.count("login") && vm.size() == 3) {
-				if (vm.count("user") && vm.count("pass")) {
+				if (loginStatus) {
+					cout << "Please logout first!" << endl;
+				}
+				else if (vm.count("user") && vm.count("pass")) {
 					currentUser = clientHandler.login(current_client, user, pass, userManager);
 					loginStatus = true;
 						
