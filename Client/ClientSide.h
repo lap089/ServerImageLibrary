@@ -7,7 +7,7 @@
 #include"ImageHelper.h"
 
 
-ImageManager getList(SOCKET& sock, string query);
+ImageManager getList(SOCKET& sock);
 vector<string> commandParser(string buf);
 
 string downImage(SOCKET&, int);

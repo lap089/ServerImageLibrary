@@ -143,7 +143,7 @@ ImageManager ImageManager::findByUser(string query)
 	return results;
 }
 
-ImageManager ImageManager::findByCatagory(string query)
+ImageManager ImageManager::findByCategory(string query)
 {
 	ImageManager results;
 	for (Image image : images) {

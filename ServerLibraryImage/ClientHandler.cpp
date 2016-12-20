@@ -57,20 +57,23 @@ bool ACK(SOCKET& current_client) {
 	}
 }
 
-void ClientHandler::getListRequest(SOCKET& current_client, ImageManager imageManager, string query, bool isUserType) {
+void ClientHandler::getListRequest(SOCKET& current_client, ImageManager imageManager, string query, int type) {
 	string data = "";
 	char buf[100];
 	int ret;
+
 	ImageManager resultImages;
-	if (isUserType) {
+	if (type == TYPE_USER || type == TYPE_MINE) {
 		resultImages = imageManager.findByUser(query);
 	}
-	else {
-		resultImages = imageManager.findByCatagory(query);
+	else if(type == TYPE_CATEGORY){
+		resultImages = imageManager.findByCategory(query);
 	}	
+	else {
+		resultImages = imageManager;
+	}
 
 	int size = resultImages.getSize();
-
 
 	// Format : id - name - catagory - description - size - uploader
 	if (size > 0) {

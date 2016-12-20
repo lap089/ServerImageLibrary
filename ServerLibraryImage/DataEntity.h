@@ -164,7 +164,7 @@ public:
 	bool isExisted( Image image);
 	void clear();
 	ImageManager findByUser(string query);
-	ImageManager findByCatagory(string query);
+	ImageManager findByCategory(string query);
 };
 
 

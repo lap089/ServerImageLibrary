@@ -20,7 +20,7 @@ int main()
 	char RecvdData[1024] = "";
 	int imageId;
 	User authenticatedUser;
-	string user, catagory, imagePath, description, pass;
+	string user, category, imagePath, description, pass;
 	ImageManager imageManager;
 	bool loginStatus = false;
 
@@ -37,22 +37,18 @@ int main()
 		("pass", po::value<string>(&pass), "Password")
 		("user", po::value<string>(&user), "Username")
 		("register,r", "Register new user command")
-		("catagory,c", po::value<string>(&catagory), "Catagory")
+		("category,c", po::value<string>(&category), "category")
 		("upload,u", "Upload image")
 		("image,i", "Image selection")
 		("id", po::value<int>(&imageId), "Image ID")
 		("all,a", "Type all")
 		("logout", "Logout command")
+		("delete", "Delete Image")
 		("list,l", "Get list of images");
-		
 	po::variables_map vm;
 
 	while (true)
 	{
-		//(buf, 0, sizeof(buf));
-		//buf[0] = '\0';
-		//cout << "\nEnter message to send ->\n";
-		//fgets(buf, sizeof(buf), stdin);
 		cout << "\nCmd>";
 		getline(cin, buf);
 			
@@ -92,18 +88,11 @@ int main()
 		}
 		else if (vm.count("logout")) {
 			loginStatus = false;
+			cout << "Logout successful" << endl;
 		}
 		else if (vm.count("list")) {
-			if (vm.count("user")) {
-				imageManager = getList(sock, user);
-			}
-			else if (vm.count("catagory")) {
-				imageManager = getList(sock, catagory);
-			}
-			else {
-				throw po::error("Please provide subject to search for!");
-			}
-			
+			imageManager = getList(sock);
+
 			cout << "Recived! Size: " << imageManager.getSize() << endl;
 
 			for (int i = 0; i < imageManager.getSize(); ++i) {

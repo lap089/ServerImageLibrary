@@ -11,7 +11,7 @@ class ClientHandler {
 public:
 	vector<string> commandParser(char* buf);
 
-	void getListRequest(SOCKET& current_client, ImageManager imageManager, string query, bool isUserType);
+	void getListRequest(SOCKET& current_client, ImageManager imageManager, string query, int type);
 
 	void downImageRequest(SOCKET& current_client, ImageManager& imageManager, int imageId);
 

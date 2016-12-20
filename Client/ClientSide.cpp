@@ -10,7 +10,7 @@ inline bool isInteger(const string & s)
 	return (*p == 0);
 }
 
-ImageManager getList(SOCKET & sock, string query)
+ImageManager getList(SOCKET & sock)
 {
 	string sendBuf;
 	char recvBuf[10024];
@@ -276,57 +276,9 @@ vector<string> commandParser(string buf) {
 	int index=0;
 	std::istringstream iss(buf.c_str());
 	vector<string> cmdTokens{ std::istream_iterator<string>{iss}, std::istream_iterator<string>{} };
-
-	//string str(buf);
-
-	//string word;
-	//for (const char c : str)
-	//{
-	//	
-	//	if (c != ' ')
-	//	{
-	//		if (c == '\'' && isPath) {
-	//			
-	//		}
-
-	//		word += c;
-	//	}
-	//	else if (isPath) {
-	//			
-	//		
-	//	}
-	//	else if (word != "")
-	//	{
-	//		if (word == "--path" || word == "-p") {
-	//			isPath = true;
-	//		}
-	//		cmdTokens.push_back(word);
-	//			word = "";
-	//	}
-
-	//}
-
 	
 	if (cmdTokens.empty() == false) {
 		for (int i = cmdTokens.size() - 1; i >= 0; i--) {
-		
-			//if (count(cmdTokens[i].begin(), cmdTokens[i].end(), '\'') == 2) {
-			//	// remove '
-			//}
-
-
-			//if (count(cmdTokens[i].begin(), cmdTokens[i].end(), '\'') == 1)
-			//{
-			//	isPath = !isPath;
-			//	if (isPath) {
-			//		
-			//		// concat
-			//	}
-			//	else {
-			//		// concat
-			//		isPath = true;
-			//	}
-			//}
 			if (cmdTokens[i].empty()) {
 				cmdTokens.erase(cmdTokens.begin() + i);
 			}

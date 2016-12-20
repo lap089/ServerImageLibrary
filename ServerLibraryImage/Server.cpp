@@ -63,7 +63,7 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 	bool loginStatus = false;
 	// our recv loop
 
-	string user, catagory, imagePath, pass;
+	string user, category, imagePath, pass;
 	int imageId;
 	po::options_description desc("Options");
 	desc.add_options()
@@ -73,10 +73,12 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 		("pass", po::value<string>(&pass), "Password")
 		("user", po::value<string>(&user), "Username")
 		("register,r", "Register new user command")
-		("catagory,c", po::value<string>(&catagory), "Catagory")
+		("category,c", po::value<string>(&category), "category")
 		("upload,u", "Upload image")
 		("id", po::value<int>(&imageId), "Image ID")
 		("logout", "Logout command")
+		("delete", "Delete Image")
+		("all,a", "Type all")
 		("list,l", "Get list of images");
 	po::variables_map vm;
 
@@ -124,16 +126,20 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 			}
 			else if (vm.count("logout")) {
 				loginStatus = false;
+				cout << "Logout successful" << endl;
 			}
 			else if (vm.count("list")) {
 				if (vm.count("user")) {
-				clientHandler.getListRequest(current_client, imageManager, user, true);
+				clientHandler.getListRequest(current_client, imageManager, user, TYPE_USER);
 				}
-				else if (vm.count("catagory")) {
-				clientHandler.getListRequest(current_client, imageManager, catagory, false);
+				else if (vm.count("category")) {
+				clientHandler.getListRequest(current_client, imageManager, category, TYPE_CATEGORY);
+				}
+				else if (vm.count("all")) {
+					clientHandler.getListRequest(current_client, imageManager, "", TYPE_ALL);
 				}
 				else {
-					throw po::error("Please provide subject to search for!");
+					clientHandler.getListRequest(current_client, imageManager, currentUser.getUsername(), TYPE_MINE);
 				}
 
 			}
