@@ -11,7 +11,7 @@ LoginForm::LoginForm(SOCKET& sock, QWidget *parent) :
     this->parent = parent;
     ui->username->setText("admin");
     ui->password->setText("123456");
-
+    setWindowTitle("Login");
 
 }
 

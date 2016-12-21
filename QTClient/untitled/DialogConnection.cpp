@@ -9,6 +9,7 @@ DialogConnection::DialogConnection(QWidget *parent) :
     ui->port->setValidator( new QIntValidator(0, 65000, this) );
     ui->ip->setText("127.0.0.1");
     ui->port->setText("123");
+    setWindowTitle("Server connection");
 }
 
 DialogConnection::~DialogConnection()

@@ -20,6 +20,7 @@ MainWindow::MainWindow(SOCKET& sock, User user, QWidget *parent) :
     ui->selection->addItem("Category");
     this->sock = sock;
     this->currentUser = user;
+    setWindowTitle("Image Library Server");
 }
 
 MainWindow::~MainWindow()
@@ -46,7 +47,7 @@ void MainWindow::on_search_clicked()
     string query = ui->quey->text().toUtf8().constData();
     if(query.empty()) {
        printMessage("Query cannot be empty");
-        return;
+       return;
     }
     QString selection = ui->selection->currentText();
     if(selection == "User") {
@@ -79,7 +80,8 @@ void MainWindow::on_download_clicked()
 {
    int currentIndex= ui->imageList->currentRow();
    if(currentIndex == -1) {
-       printMessage("Please Select image");
+       printMessage("Please select an image");
+       return;
    }
    sendCmd("-d --id " + to_string(currentIndex));
    try {

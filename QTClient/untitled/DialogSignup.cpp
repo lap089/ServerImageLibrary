@@ -8,6 +8,7 @@ DialogSignup::DialogSignup(SOCKET& sock, QWidget *parent) :
     ui->setupUi(this);
     this->sock = sock;
     this->parent = parent;
+    setWindowTitle("Sign Up");
 }
 
 DialogSignup::~DialogSignup()
@@ -52,6 +53,7 @@ void DialogSignup::on_submit_clicked()
     try {
         signUp(sock, username, password);
         printInfoMessage("SignUp successful");
+        this->close();
     } catch (SocketEx& e) {
         printErrorMessage(e.what());
     }

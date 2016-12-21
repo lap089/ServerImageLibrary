@@ -37,7 +37,7 @@ public:
     {
         if (DialogConnection->objectName().isEmpty())
             DialogConnection->setObjectName(QStringLiteral("DialogConnection"));
-        DialogConnection->resize(400, 153);
+        DialogConnection->resize(400, 111);
         formLayout_2 = new QFormLayout(DialogConnection);
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
         formLayout = new QFormLayout();

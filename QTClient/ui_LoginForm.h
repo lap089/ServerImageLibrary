@@ -40,7 +40,7 @@ public:
     {
         if (LoginForm->objectName().isEmpty())
             LoginForm->setObjectName(QStringLiteral("LoginForm"));
-        LoginForm->resize(400, 180);
+        LoginForm->resize(400, 123);
         verticalLayout_2 = new QVBoxLayout(LoginForm);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();

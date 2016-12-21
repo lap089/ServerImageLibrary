@@ -39,7 +39,7 @@ public:
     {
         if (DialogSignup->objectName().isEmpty())
             DialogSignup->setObjectName(QStringLiteral("DialogSignup"));
-        DialogSignup->resize(400, 182);
+        DialogSignup->resize(400, 139);
         formLayout_2 = new QFormLayout(DialogSignup);
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
         formLayout = new QFormLayout();
