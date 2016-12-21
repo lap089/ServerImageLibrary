@@ -91,6 +91,7 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 			return 0;
 		}
 
+		buf[res] = '\0';
 		
 		Sleep(10);
 

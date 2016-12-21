@@ -80,7 +80,7 @@ void s_handle(int s, SOCKET& client, SOCKET& sock)
 	WSACleanup();
 	Sleep(1000);
 	cout << "EXIT SIGNAL :" << s;
-	exit(0);
+    //exit(0);
 }
 
 
@@ -118,7 +118,7 @@ void setUpServerConnection(SOCKET& client, SOCKET& sock, string& ip, int port)
 	sockaddr addr;
 	WSADATA data;
 	int res;
-	string mess;
+    string mess;
 
 	ser.sin_family = AF_INET;
 	ser.sin_port = htons(port);                    //Set the port
@@ -132,31 +132,31 @@ void setUpServerConnection(SOCKET& client, SOCKET& sock, string& ip, int port)
 		<< "\nDescription: " << data.szDescription
 		<< "\nStatus: " << data.szSystemStatus << endl;
 
-	if (res != 0) {
-		mess = "WSAStarup failed";
-		s_cl(mess.c_str(), WSAGetLastError(), client, sock);
-		throw SocketEx(mess);
-	}
+    if (res != 0){
+        mess = "WSAStarup failed";
+        s_cl(mess.c_str(), WSAGetLastError(), client, sock);
+        throw SocketEx(mess);
+    }
 	sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);       //Create the socket
-	if (sock == INVALID_SOCKET) {
-		mess = "Invalid Socket ";
-		s_cl(mess.c_str(), WSAGetLastError(), client, sock);
-		throw SocketEx(mess);
-	}
-	else if (sock == SOCKET_ERROR) {
-		mess = "Socket Error";
-		s_cl(mess.c_str(), WSAGetLastError(), client, sock);
-		throw SocketEx(mess);
-	}
+    if (sock == INVALID_SOCKET) {
+        mess = "Invalid Socket ";
+        s_cl(mess.c_str(), WSAGetLastError(), client, sock);
+        throw SocketEx(mess);
+    }
+    else if (sock == SOCKET_ERROR) {
+        mess = "Socket Error";
+        s_cl(mess.c_str(), WSAGetLastError(), client, sock);
+        throw SocketEx(mess);
+    }
 	else
 		cout << "Socket Established" << endl;
 
 	res = connect(sock, &addr, sizeof(addr));               //Connect to the server
 	if (res != 0)
 	{
-		mess = "SERVER UNAVAILABLE";
-		s_cl(mess.c_str(), res, client, sock);
-		throw SocketEx(mess);
+        mess = "SERVER UNAVAILABLE";
+        s_cl(mess.c_str(), res, client, sock);
+        throw SocketEx(mess);
 	}
 	else
 	{
