@@ -20,6 +20,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
@@ -32,12 +33,13 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
+    QProgressBar *progressBar;
     QPushButton *download;
     QLineEdit *quey;
-    QListWidget *imageList;
     QComboBox *selection;
-    QTextBrowser *textBrowser;
+    QListWidget *imageList;
     QPushButton *search;
+    QTextBrowser *textBrowser;
     QPushButton *upload;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -51,10 +53,16 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        progressBar = new QProgressBar(centralwidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setValue(0);
+
+        gridLayout->addWidget(progressBar, 7, 4, 1, 1);
+
         download = new QPushButton(centralwidget);
         download->setObjectName(QStringLiteral("download"));
 
-        gridLayout->addWidget(download, 7, 4, 1, 1);
+        gridLayout->addWidget(download, 8, 4, 1, 1);
 
         quey = new QLineEdit(centralwidget);
         quey->setObjectName(QStringLiteral("quey"));
@@ -66,25 +74,25 @@ public:
 
         gridLayout->addWidget(quey, 0, 1, 1, 4);
 
-        imageList = new QListWidget(centralwidget);
-        imageList->setObjectName(QStringLiteral("imageList"));
-
-        gridLayout->addWidget(imageList, 6, 0, 2, 4);
-
         selection = new QComboBox(centralwidget);
         selection->setObjectName(QStringLiteral("selection"));
 
         gridLayout->addWidget(selection, 0, 0, 1, 1);
 
-        textBrowser = new QTextBrowser(centralwidget);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        imageList = new QListWidget(centralwidget);
+        imageList->setObjectName(QStringLiteral("imageList"));
 
-        gridLayout->addWidget(textBrowser, 6, 4, 1, 1);
+        gridLayout->addWidget(imageList, 6, 0, 3, 4);
 
         search = new QPushButton(centralwidget);
         search->setObjectName(QStringLiteral("search"));
 
         gridLayout->addWidget(search, 1, 3, 1, 1);
+
+        textBrowser = new QTextBrowser(centralwidget);
+        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+
+        gridLayout->addWidget(textBrowser, 6, 4, 1, 1);
 
         upload = new QPushButton(centralwidget);
         upload->setObjectName(QStringLiteral("upload"));

@@ -85,9 +85,15 @@ void MainWindow::on_download_clicked()
    }
    sendCmd("-d --id " + to_string(currentIndex));
    try {
+       ui->progressBar->setMaximum(0);
+       ui->progressBar->setMinimum(0);
+       ui->progressBar->setValue(0);
        string fileName = downImage(sock, currentIndex);
        ImageWindow* dialogImage = new ImageWindow(fileName, this);
        dialogImage->show();
+       ui->progressBar->setMaximum(100);
+       ui->progressBar->setMinimum(0);
+       ui->progressBar->setValue(100);
    } catch (SocketEx& e) {
        printMessage(e.what());
    }

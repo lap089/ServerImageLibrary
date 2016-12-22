@@ -16,6 +16,13 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="7" column="4">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4">
      <widget class="QPushButton" name="download">
       <property name="text">
        <string>Download</string>
@@ -35,14 +42,11 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="0" rowspan="2" colspan="4">
-     <widget class="QListWidget" name="imageList"/>
-    </item>
     <item row="0" column="0">
      <widget class="QComboBox" name="selection"/>
     </item>
-    <item row="6" column="4">
-     <widget class="QTextBrowser" name="textBrowser"/>
+    <item row="6" column="0" rowspan="3" colspan="4">
+     <widget class="QListWidget" name="imageList"/>
     </item>
     <item row="1" column="3">
      <widget class="QPushButton" name="search">
@@ -50,6 +54,9 @@
        <string>Search</string>
       </property>
      </widget>
+    </item>
+    <item row="6" column="4">
+     <widget class="QTextBrowser" name="textBrowser"/>
     </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="upload">
