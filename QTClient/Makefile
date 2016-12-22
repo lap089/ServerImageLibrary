@@ -232,6 +232,7 @@ Makefile: untitled\untitled.pro C:\Qt\Qt5.7.1\5.7\msvc2015_64\mkspecs\win32-msvc
 		C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\qtmaind.prl \
 		C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Widgets.prl \
 		C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Gui.prl \
+		C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Network.prl \
 		C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Core.prl
 	$(QMAKE) -spec win32-msvc2015 "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile untitled\untitled.pro
 C:\Qt\Qt5.7.1\5.7\msvc2015_64\mkspecs\features\spec_pre.prf:
@@ -393,6 +394,7 @@ untitled\untitled.pro:
 C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\qtmaind.prl:
 C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Widgets.prl:
 C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Gui.prl:
+C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Network.prl:
 C:\Qt\Qt5.7.1\5.7\msvc2015_64\lib\Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-msvc2015 "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile untitled\untitled.pro

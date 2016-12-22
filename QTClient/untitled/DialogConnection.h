@@ -4,6 +4,7 @@
 #include <QDialog>
 #include<LoginForm.h>
 #include"ClientSide.h"
+#include <QHostAddress>
 
 namespace Ui {
 class DialogConnection;

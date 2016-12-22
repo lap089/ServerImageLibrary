@@ -32,6 +32,13 @@ void DialogConnection::on_connect_clicked()
 {
     string ip = ui->ip->text().toUtf8().constData();
     int port = ui->port->text().toInt();
+    QHostAddress myIP;
+
+    if(!myIP.setAddress(ui->ip->text()) ) {
+       printErrorMessage("Invalid IP address");
+       return;
+    }
+
     try {
         setUpServerConnection(client, sock, ip, port);
         this->hide();
