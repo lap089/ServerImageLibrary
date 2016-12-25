@@ -100,7 +100,7 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 			po::store(po::command_line_parser(clientHandler.commandParser(buf)).options(desc).run(), vm);
 			po::notify(vm);
 
-			if (!loginStatus && !vm.count("login") && !vm.count("register")) {
+			if (!loginStatus && !vm.count("login") && !vm.count("register") && !vm.count("help")) {
 				cout << "Please login first or register new account (--help (-h) for more info)" << endl;
 			}
 			else if (vm.count("login") && vm.size() == 3) {
@@ -165,6 +165,9 @@ DWORD WINAPI receive_cmds(LPVOID lpParam)
 				// close the socket associted with this client and end this thread
 				closesocket(current_client);
 				ExitThread(0);
+			}
+			else if (vm.count("help")) {
+				cout << desc << endl;
 			}
 			else {
 				throw po::error("Invalid command");

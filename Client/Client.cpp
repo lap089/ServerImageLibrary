@@ -51,7 +51,11 @@ int main()
 	{
 		cout << "\nCmd>";
 		getline(cin, buf);
-			
+		
+		if (cin.eof()) {
+			cin.clear();
+		}
+
 		res = send(sock, buf.c_str(), sizeof(buf), 0);
 
 		socketErrorHandler(res, client, sock);
